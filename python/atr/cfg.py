@@ -64,4 +64,12 @@ def Run2012A_22Jan2013_v1_run2012v0(f, label):
     f.set('CMSSW', 'lumi_mask', '../data/Cert_190456-208686_8TeV_22Jan2013ReReco_Collisions12_JSON_MuonPhys.txt')
     return f
 
+def Run2012B_22Jan2013_v1_run2012v0(f, label):
+    return Run2012A_22Jan2013_v1_run2012v0(f, label) 
+
+def Run2012C_22Jan2013_v1_run2012v0(f, label):
+    return Run2012A_22Jan2013_v1_run2012v0(f, label) 
+
+def Run2012D_22Jan2013_v1_run2012v0(f, label):
+    return Run2012A_22Jan2013_v1_run2012v0(f, label) 
 

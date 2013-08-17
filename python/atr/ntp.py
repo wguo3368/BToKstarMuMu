@@ -20,16 +20,14 @@ def procdir(label):
             'rel/CMSSW_5_3_9_patch3/src/BphAna/BToKstarMuMu_run2012v0/python')
     else:
         raise NameError(label)
-    
     return procdir
     
 
 def driver(label):
-    if 'Run2012A-22Jan2013-v1' in label:
-        driver =  'btokstarmumu_Run2012.py' 
+    if '22Jan2013-v1' in label:
+        driver = 'btokstarmumu_Run2012.py' 
     else:
         raise NameError(label)
-    
     return driver 
 
 
@@ -38,6 +36,10 @@ def dataset(label):
         dataset = '/DoubleMuParked/Run2012A-22Jan2013-v1/AOD'
     elif 'Run2012B-22Jan2013-v1' in label:
         dataset = '/DoubleMuParked/Run2012B-22Jan2013-v1/AOD'
+    elif 'Run2012C-22Jan2013-v1' in label:
+        dataset = '/DoubleMuParked/Run2012C-22Jan2013-v1/AOD'
+    elif 'Run2012D-22Jan2013-v1' in label:
+        dataset = '/DoubleMuParked/Run2012D-22Jan2013-v1/AOD'
     else:
         raise NameError(label)
     return dataset
@@ -50,7 +52,6 @@ def rootpath(datatype, label, test=False):
         inpath = os.path.join(eosbase, 'dat/ntp/data', ntp_label)
     else:
         inpath = os.path.join(eosbase, 'dat/ntp/mc', label)
-
     return inpath 
 
 
@@ -64,7 +65,6 @@ def rootname(datatype, label, batch=False):
         name = 'BToKstarMuMu_merged_${LSB_JOBINDEX}'
     return name
 
-   
         
 def grid_path(label):
     com_name = get_name_from_label(label)
