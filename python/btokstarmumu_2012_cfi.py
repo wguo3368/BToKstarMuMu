@@ -177,7 +177,7 @@ process.ntuple = cms.EDAnalyzer(
     TruthMatchKsMaxVtx = cms.untracked.double(10.0), 
 
     # HLT-trigger cuts 
-    MuonMinPt = cms.untracked.double(3.0), # [GeV]
+    MuonMinPt = cms.untracked.double(3.5), # [GeV]
     MuonMaxEta = cms.untracked.double(2.2),  
     MuonMaxDcaBs = cms.untracked.double(2.0), # [cm]
 
@@ -185,7 +185,7 @@ process.ntuple = cms.EDAnalyzer(
     MuMuMinInvMass = cms.untracked.double(1.0), # [GeV/c2]
     MuMuMaxInvMass = cms.untracked.double(4.8), # [GeV/c2]
 
-    MuMuMinVtxCl = cms.untracked.double(0.05), 
+    MuMuMinVtxCl = cms.untracked.double(0.10),  
     MuMuMinLxySigmaBs = cms.untracked.double(3.0), 
     MuMuMaxDca = cms.untracked.double(0.5), # [cm]
     MuMuMinCosAlphaBs = cms.untracked.double(0.9),
