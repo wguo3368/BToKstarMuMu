@@ -3,15 +3,19 @@ ROOTFLAGS=`root-config --cflags --libs`
 
 SELECTORFLAGS=$(GCCFLAGS) $(ROOTFLAGS) -lProof
 FIGURESFLAGS=$(GCCFLAGS) $(ROOTFLAGS) 
+FITFLAGS=$(GCCFLAGS) $(ROOTFLAGS) -lRooFit -lRooFitCore 
 
-all: SingleBuToKstarMuMuSelector SingleBuToKstarMuMuFigures
+all: sel fig fit  
 	@echo "Full build successful."
 
-SingleBuToKstarMuMuSelector: SingleBuToKstarMuMuSelector.cc 
+sel: SingleBuToKstarMuMuSelector.cc 
 	g++ $(SELECTORFLAGS) $< -o $@
 
-SingleBuToKstarMuMuFigures: SingleBuToKstarMuMuFigures.cc 
+fig: SingleBuToKstarMuMuFigures.cc 
 	g++ $(FIGURESFLAGS) $< -o $@
 
+fit: SingleBuToKstarMuMuFitters.cc 
+	g++ $(FITFLAGS) $< -o $@	
+
 clean:
-	rm -rf SingleBuToKstarMuMuSelector SingleBuToKstarMuMuFigures 
+	rm -rf sel fig fit 

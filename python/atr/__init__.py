@@ -10,6 +10,7 @@ import os
 import sys
 
 import ntp
+import sel 
 import cfg
 
 afbpath = os.environ['afb']
@@ -21,8 +22,10 @@ rafbpath = os.environ['rafb']
 rfigpath = os.path.join(rafbpath, 'doc', 'fig')
 
 def get_afb_from_label(label):
-    raise NameError(label)
-
-    afb = 0 
+    if 'run2012v0' in label:
+        afb = 1
+    else: 
+        raise NameError(label)
     return afb 
 
+    

@@ -16,7 +16,7 @@ def main(args):
     label = args[1]
     cut = args[2]
 
-    ntp_labels = atr.sel.ntp_labels(datatype, label)
+    ntp_labels = atr.ntp.ntp_labels(datatype, label)
 
     for ntp_label in ntp_labels:
         proc_ntuple(args, ntp_label, cut)
@@ -44,10 +44,8 @@ def proc_ntuple(args, label, cut):
     sel_datatype = datatype 
     if datatype == 'mc' and 'BuToKstarJPsi' in label:
         sel_datatype =  'BuToKstarJPsi' 
-    elif datatype == 'mc' and 'BuToKstarMuMu' in label:
+    if datatype == 'mc' and 'BuToKstarMuMu' in label:
         sel_datatype =  'BuToKstarMuMu' 
-    else:
-        raise NameError(label) 
 
     procdir = atr.sel.procdir(label)
     cmd = './sel %s %s %s %s' %(sel_datatype, cut, infile, outfile)
@@ -68,7 +66,8 @@ def proc_ntuple(args, label, cut):
     if batch:
         afb = atr.get_afb_from_label(label)
         pre = 'setafb %s\n\ncd %s' % (afb, procdir) 
-        bashfile = set_file(atr.bashpath, label, comname, '.sh', test=test)
+        bashfile = set_file(atr.sel.bashdir(label), 
+                            label, comname, '.sh', test=test)
         
 	update_bashfile_cmd(bashfile, cmd, pre=pre, test=test)
         logfile = set_file(atr.logpath, label, comname, '.log', test=test)

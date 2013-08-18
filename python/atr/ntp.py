@@ -92,3 +92,22 @@ def jobs_created(label):
     jobs_created = set(range(1, njobs+1))
     return jobs_created 
 
+
+def ntp_labels(datatype, label):
+    if datatype == 'data' and 'run2012v0' in label: 
+        ntp_labels = [
+            'Run2012A_22Jan2013_v1_run2012v0',
+            'Run2012B_22Jan2013_v1_run2012v0',
+            'Run2012C_22Jan2013_v1_run2012v0',
+            'Run2012D_22Jan2013_v1_run2012v0',
+        ]
+    else:
+        raise NameError(label)
+    return ntp_labels
+
+num_rootfiles = {
+    'Run2012A_22Jan2013_v1_run2012v0': 1, 
+    'Run2012B_22Jan2013_v1_run2012v0': 4, 
+    'Run2012C_22Jan2013_v1_run2012v0': 5, 
+    'Run2012D_22Jan2013_v1_run2012v0': 5, 
+}
