@@ -69,11 +69,26 @@ def rootname(datatype, label, batch=False):
 def grid_path(label):
     com_name = get_name_from_label(label)
     eosbase = '/afs/cern.ch/user/x/xshi/eos/cms/store/user/xshi/'
-    if label in ['Run2011A-PromptReco-v4_run2011v0_1', 
-                 ] : 
+    if '22Jan2013-v1_run2012v0' in label: 
         srcdir = os.path.join(
-            eosbase, 'MuOnia',
-            com_name, '09dd54ed3307c6d768a6853667b85e6a')
+            eosbase, 'DoubleMuParked',
+            com_name, '2216baf4bbf15d7684a97e8092188a42')
     else:
         raise NameError(label)
     return srcdir 
+
+def jobs_created(label): 
+    if 'Run2012A-22Jan2013-v1_run2012v0' in label: 
+        njobs = 243
+    elif 'Run2012B-22Jan2013-v1_run2012v0' in label:
+        njobs = 1647
+    elif 'Run2012C-22Jan2013-v1_run2012v0' in label:
+        njobs = 2429
+    elif 'Run2012D-22Jan2013-v1_run2012v0' in label:
+        njobs = 2353
+    else:
+        raise NameError(label)
+
+    jobs_created = set(range(1, njobs+1))
+    return jobs_created 
+

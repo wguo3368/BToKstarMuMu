@@ -383,7 +383,7 @@ def get_events_set(txtfile):
     return set(run_evts)
 
 
-def get_file_groups_by_size(files_name_size_list, size_max='2G'):
+def get_file_groups_by_size(files_name_size_list, size_max='2G', nfile_max=500):
     if size_max == '2G':
         size_max = 2*1073741824
         
@@ -397,7 +397,7 @@ def get_file_groups_by_size(files_name_size_list, size_max='2G'):
         size = name_size[1]
         
         name = name.encode('ascii')
-        if size_sum < size_max:
+        if size_sum < size_max and len(group) < nfile_max:
             group.append(name)
             #group.append(name_size)
             size_sum += float(size)
@@ -465,7 +465,7 @@ def list_to_file(li, f, listname='l', prefix=''):
 
 
 def merge_root_files(srcdir, dstdir, force_update_db=False, job=None, 
-                     size_max=2*9.8e8):
+                     size_max=2*9.8e8, nfile_max=500):
     dbname = '.files.db'
     dbfile = check_and_join(dstdir, dbname)
 
@@ -486,7 +486,8 @@ def merge_root_files(srcdir, dstdir, force_update_db=False, job=None,
     sys.stdout.write('total of %s files, size %s.\n' % (len(files_name_size_list),
                                                       convert_bytes(totalsize)))
     com_name = files_name_size_list[0][0].split('_')[0] 
-    rootfile_groups = get_file_groups_by_size(files_name_size_list, size_max=size_max)
+    rootfile_groups = get_file_groups_by_size(files_name_size_list, 
+                                              size_max=size_max, nfile_max=nfile_max)
 
     ngroups = len(rootfile_groups)
 
