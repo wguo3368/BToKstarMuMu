@@ -7,6 +7,8 @@
 #include <TFile.h>
 #include <TPad.h> 
 #include <TCanvas.h> 
+#include <TChain.h>
+
 
 #include <RooRealVar.h>
 #include <RooGaussian.h>
@@ -16,7 +18,7 @@
 #include <RooFitResult.h>
 #include <RooPlot.h>
 
-#include "tools.cc" 
+#include "tools.h" 
 
 using namespace std; 
 using namespace RooFit ;

@@ -5,13 +5,14 @@
 #include <algorithm>
 #include <iostream>
 #include <fstream>
-#include <TChain.h>
 #include <TStyle.h>
 #include <TROOT.h>
+#include <TChain.h>
+#include "tools.h"
 
 using namespace std; 
 
-void set_root_style(int stat=1110, int grid=0){
+void set_root_style(int stat, int grid){
   gROOT->Reset();
 
   gStyle->SetTitleFillColor(0) ; 
@@ -41,7 +42,7 @@ void set_root_style(int stat=1110, int grid=0){
   gStyle->SetStatBorderSize(1); 
 }
 
-TChain* add_chain(TString datatype, TString label, TString cut, int verbose=0){
+TChain* add_chain(TString datatype, TString label, TString cut, int verbose){
   TChain *globChain = new TChain("tree");
   // TString base = Form("%s/sel", getenv("dat")); 
   TString fNameList = Form("../data/sel_%s_%s_%s_rootfiles.txt",
