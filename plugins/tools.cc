@@ -55,9 +55,14 @@ TChain* add_chain(TString datatype, TString label, TString cut, int verbose=0){
       return NULL;
     }
 
-  char lineFromFile[255];
-  while(fList.getline(lineFromFile, 250))
+  // char lineFromFile[255];
+  // while(fList.getline(lineFromFile, 250))
+
+  string lineFromFile;
+  while( getline(fList, lineFromFile) )
     {
+      if (lineFromFile.empty()) continue; 
+
       TString fileName = lineFromFile;
       fileName = Form("%s/sel/%s/%s", getenv("dat"), 
 		      datatype.Data(), fileName.Data());
